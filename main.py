@@ -30,3 +30,9 @@ def login(user: User):
     if result:
         return {"status": "success", "message": f"{user.username} logged in!"}
     return {"status": "error", "message": "Invalid credentials"}
+    @app.get("/users")
+def get_users():
+    cursor.execute("SELECT * FROM users")
+    rows = cursor.fetchall()
+    return {"users": rows}
+
